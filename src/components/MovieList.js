@@ -25,8 +25,10 @@ const MovieList = ({ title, movies }) => {
   }, []);
 
   return (
-    <div className="px-6">
-      <h1 className="text-3xl py-4 text-white">{title}</h1>
+    <div className="px-4 md:px-6">
+      <h1 className="text-xl md:text-2xl lg:text-3xl py-3 md:py-4 text-white">
+        {title}
+      </h1>
       <div
         className="flex overflow-x-scroll no-scrollbar"
         style={{

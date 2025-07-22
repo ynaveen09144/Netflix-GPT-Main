@@ -1,4 +1,3 @@
-import React from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
@@ -43,12 +42,10 @@ const Header = () => {
       }
     });
 
-    // Unsubscribe when component unmounts
     return () => unsubscribe();
   }, []);
 
   const handleGptSearchClick = () => {
-    // Toggle GPT Search
     dispatch(toggelGptSearchView());
   };
 
@@ -57,13 +54,13 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between items-center">
-      <img className="w-44" src={LOGO} alt="logo" />
+    <div className="absolute w-screen px-4 md:px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between items-center">
+      <img className="w-32 md:w-44" src={LOGO} alt="logo" />
       {user && (
-        <div className="flex">
+        <div className="flex items-center gap-1 md:gap-4">
           {showGptSearch && (
             <select
-              className="p-2 m-2 bg-gray-900 text-white"
+              className="p-1 md:p-2 m-1 md:m-2 bg-gray-900 text-white text-sm md:text-base"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -74,15 +71,24 @@ const Header = () => {
             </select>
           )}
           <button
-            className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+            className="py-1 px-2 md:py-2 md:px-4 mx-1 md:mx-4 my-1 md:my-2 bg-purple-800 text-white rounded-lg text-sm md:text-base"
             onClick={handleGptSearchClick}
           >
             {showGptSearch ? "Home Page" : "GPT Search"}
           </button>
-          <img className="w-10 h-10" alt="usericon" src={user?.photoURL} />
-          <button onClick={handleSignOut} className="font-bold text-white">
-            (Sign out)
-          </button>
+          <div className="flex items-center gap-1 md:gap-2">
+            <img
+              className="w-8 h-8 md:w-10 md:h-10"
+              alt="usericon"
+              src={user?.photoURL}
+            />
+            <button
+              onClick={handleSignOut}
+              className="font-bold text-white text-xs md:text-base"
+            >
+              (Sign out)
+            </button>
+          </div>
         </div>
       )}
     </div>

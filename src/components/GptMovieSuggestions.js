@@ -33,8 +33,8 @@ const GptMovieSuggestions = () => {
   };
 
   return (
-    <div className="p-4 m-4 bg-black text-white bg-opacity-90 rounded-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">
+    <div className="p-2 md:p-4 m-2 md:m-4 bg-black text-white bg-opacity-90 rounded-lg">
+      <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center">
         Recommended Movies
       </h2>
 
@@ -42,18 +42,18 @@ const GptMovieSuggestions = () => {
       <div
         ref={scrollRef}
         onWheel={handleWheel}
-        className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide"
+        className="flex overflow-x-auto gap-3 md:gap-6 pb-3 md:pb-4 scrollbar-hide"
       >
         {moviesWithPosters.map((movie) => (
           <div
             key={`${movie.id}-${movie.name}`}
-            className="flex-shrink-0 w-48 hover:scale-105 transition-transform duration-200"
+            className="flex-shrink-0 w-32 sm:w-40 md:w-48 hover:scale-105 transition-transform duration-200"
           >
-            <div className="font-bold text-center mb-2 h-12 flex items-center justify-center px-2">
+            <div className="font-bold text-center mb-1 md:mb-2 h-10 md:h-12 flex items-center justify-center px-1 md:px-2 text-xs sm:text-sm md:text-base">
               {movie.name}
             </div>
             <img
-              className="w-full h-64 object-cover rounded-md hover:ring-2 hover:ring-white"
+              className="w-full h-40 sm:h-52 md:h-64 object-cover rounded-md hover:ring-1 md:hover:ring-2 hover:ring-white"
               src={`https://image.tmdb.org/t/p/w500${movie.poster}`}
               alt={movie.name}
               loading="lazy"
@@ -66,7 +66,7 @@ const GptMovieSuggestions = () => {
       </div>
 
       {/* Scroll hint for users */}
-      <p className="text-center text-gray-400 mt-2 text-sm">
+      <p className="text-center text-gray-400 mt-1 md:mt-2 text-xs md:text-sm">
         Scroll horizontally to view more movies
       </p>
     </div>
